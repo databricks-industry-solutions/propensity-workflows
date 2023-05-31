@@ -3,27 +3,37 @@
 [![CLOUD](https://img.shields.io/badge/CLOUD-ALL-blue?logo=googlecloud&style=for-the-badge)](https://cloud.google.com/databricks)
 [![POC](https://img.shields.io/badge/POC-10_days-green?style=for-the-badge)](https://databricks.com/try-databricks)
 
-## Business Problem
-<List of the business use case the solution accelerator address>
+The purpose of this solution accelerator is to setup a high-level workflow with which household (customer) propensity scores for various product categories can be updated on a regular basis. Such scores could be used by a variety of marketing systems to identify classes of products or product-aligned promotional offers to present to users as they interact with a website, mobile app or email messages sent to them.
 
-## Scope
-<How we expect the user to use this content>
+We envision this workflow as consisting of three principal tasks:
+</p>
+
+1. Feature Generation (addressed in notebook *Task__Feature_Engineering*)
+2. Model Training  (addressed in notebook *TASK__Model_Training*)
+3. Propensity Scoring (addressed in notebook *TASK__Propensity_Estimation*)
+
+
+**NOTE** Our focus in the numbered notebooks will be on workflow enablement. To understand the details of the work involved in each of these steps, please review the content in each of the task-aligned notebooks.
+
+At the time of solution initialization, the team responsible for the solution will need to create the backlog of features required to support model training and then complete a first pass on the model training itself.  At that point, propensity scores can be created through a two-part workflow, one of which operates daily and the other of which operates less frequently, most likely weekly.
+
+In the daily workflow, features are calculated from the latest information available in the system.  Those features are used in combination with available models to assemble the set of propensity scores to be used by marketers.
+
+In the weekly workflow, models are retrained using pre-calculated features.  The models are moved into production-ready status so that the next iteration of the daily workflow can leverage them for their work.
+
+In the notebooks numbered 1 & 2, we will tackle the initialization steps, calling tasks associated with the three stages identified above in a slightly different sequence in order to setup our environment.  In notebook 3, we will setup the daily and weekly workflows as described above.
 
 ___
-<john.doe@databricks.com>
+<tian.tan@databricks.com> <bryan.smith@databricks.com>
 
 ___
 
 
-IMAGE TO REFERENCE ARCHITECTURE
+<img src='https://brysmiwasb.blob.core.windows.net/demos/images/prop_workflow.png' width=800>
 
 ___
 
-&copy; 2022 Databricks, Inc. All rights reserved. The source in this notebook is provided subject to the Databricks License [https://databricks.com/db-license-source].  All included or referenced third party libraries are subject to the licenses set forth below.
-
-| library                                | description             | license    | source                                              |
-|----------------------------------------|-------------------------|------------|-----------------------------------------------------|
-| PyYAML                                 | Reading Yaml files      | MIT        | https://github.com/yaml/pyyaml                      |
+&copy; 2023 Databricks, Inc. All rights reserved. The source in this notebook is provided subject to the Databricks License [https://databricks.com/db-license-source].  All included or referenced third party libraries are subject to the licenses set forth below.
 
 ## Getting started
 
