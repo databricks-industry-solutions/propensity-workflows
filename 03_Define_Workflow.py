@@ -11,6 +11,8 @@
 # MAGIC <img src='https://brysmiwasb.blob.core.windows.net/demos/images/prop_workflow.png' width=800>
 # MAGIC
 # MAGIC The daily workflow will focus on executing the *Task__Feature_Engineering* and *Task__Propensity_Estimation* tasks. The weekly workflow will focus on executing the *Task__Model_Training* task. More details about the logic associated with each task can be found within the individual task notebooks.  
+# MAGIC
+# MAGIC In addition to the UI instructions listed below, we provide automation in the `./RUNME` notebook that can create these workflows for you. 
 
 # COMMAND ----------
 

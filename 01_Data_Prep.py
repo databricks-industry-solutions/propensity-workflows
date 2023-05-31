@@ -22,6 +22,17 @@ import pyspark.sql.functions as fn
 
 # COMMAND ----------
 
+# DBTITLE 1,Get Config Settings
+# MAGIC %run ./util/config
+
+# COMMAND ----------
+
+# DBTITLE 1,Reinitiate the environment we use for this accelerator 
+# This is defined in the `./util/config` notebook
+teardown()
+
+# COMMAND ----------
+
 # MAGIC %md ##Step 1: Setup Tables
 # MAGIC
 # MAGIC To make the data available for our analysis, we provide the `./util/extract_data` notebook to [download](https://www.kaggle.com/frtgnn/dunnhumby-the-complete-journey), extract and copy the data. Each file in the dataset is a comma-separated values file with a header which can be read to a table as follows:
@@ -32,11 +43,6 @@ import pyspark.sql.functions as fn
 
 # DBTITLE 1,Download and extract data
 # MAGIC %run ./util/extract_data 
-
-# COMMAND ----------
-
-# DBTITLE 1,Get Config Settings
-# MAGIC %run ./util/config
 
 # COMMAND ----------
 

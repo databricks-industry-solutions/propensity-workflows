@@ -33,7 +33,7 @@ from solacc.companion import NotebookSolutionCompanion
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC Before setting up the rest of the accelerator, we need set up a few credentials in order to access ____. Grab ___ key for your ___ account ([documentation](https://www.kaggle.com/docs/api#getting-started-installation-&-authentication) here). Here we demonstrate using the [Databricks Secret Scope](https://docs.databricks.com/security/secrets/secret-scopes.html) for credential management. 
+# MAGIC Before setting up the rest of the accelerator, we need set up a few credentials in order to access the Kaggle dataset. Grab the key for your Kaggle account ([documentation](https://www.kaggle.com/docs/api#getting-started-installation-&-authentication) here). Here we demonstrate using the [Databricks Secret Scope](https://docs.databricks.com/security/secrets/secret-scopes.html) for credential management. 
 # MAGIC
 # MAGIC Copy the block of code below, replace the name the secret scope and fill in the credentials and execute the block. After executing the code, The accelerator notebook will be able to access the credentials it needs.
 # MAGIC
@@ -56,6 +56,10 @@ from solacc.companion import NotebookSolutionCompanion
 # MAGIC   "string_value": "____"
 # MAGIC })
 # MAGIC ```
+
+# COMMAND ----------
+
+# MAGIC %md Here we define a workflow to run the main body of the accelerator which includes only the numbered notebooks. 
 
 # COMMAND ----------
 
@@ -119,7 +123,7 @@ job_json = {
                 "spark_conf": {
                     "spark.databricks.delta.formatCheck.enabled": "false"
                     },
-                    "num_workers": 2,
+                    "num_workers": 4,
                     "node_type_id": {"AWS": "i3.xlarge", "MSA": "Standard_DS3_v2", "GCP": "n1-highmem-4"},
                     "custom_tags": {
                         "usage": "solacc_testing"
@@ -137,12 +141,65 @@ NotebookSolutionCompanion().deploy_compute(job_json, run_job=run_job)
 
 # COMMAND ----------
 
-# MAGIC %md In notebook 03 we show how to define a weekly workflow for model retraining. Here we include some automation to create the same workflow as in the UI screenshots.
+# MAGIC %md In notebook 03 we show how to define a daily workflow for scoring and a weekly workflow for model retraining. Here we include some automation to create the same workflows as in the UI screenshots.
 
 # COMMAND ----------
 
-job_json_for_notebook_03 = {
-      "name": "[Solution Accelerator] Weekly-Propensity",
+job_json_daily = {
+      "name": "[Solution Accelerator] Propensity Scoring - Daily",
+      "timeout_seconds": 28800,
+      "max_concurrent_runs": 1,
+      "tasks": [
+          {
+              "task_key": "Get_Config",
+              "notebook_task": {
+                  "notebook_path": "00_Intro_and_Config"
+              },
+              "job_cluster_key": "propensity_daily_cluster"
+          },
+          {
+              "task_key": "Generate_Features",
+              "depends_on": [
+                  {
+                      "task_key": "Get_Config"
+                  }
+              ],
+              "notebook_task": {
+                  "notebook_path": "Task__Feature_Engineering"
+              },
+              "job_cluster_key": "propensity_daily_cluster"
+          },
+          {
+              "task_key": "Estimate_Propensity",
+              "depends_on": [
+                  {
+                      "task_key": "Generate_Features"
+                  }
+              ],
+              "notebook_task": {
+                  "notebook_path": "Task__Propensity_Estimation"
+              },
+              "job_cluster_key": "propensity_daily_cluster"
+          }
+      ],
+      "job_clusters": [
+          {
+              "job_cluster_key": "propensity_daily_cluster",
+              "new_cluster": {
+                  "cluster_name": "",
+                  "spark_version": "12.2.x-cpu-ml-scala2.12",
+                  "spark_conf": {
+                      "spark.databricks.delta.preview.enabled": "true"
+                  },
+                  "node_type_id": {"AWS": "i3.xlarge", "MSA": "Standard_DS3_v2", "GCP": "n1-highmem-4"},
+                  "num_workers": 4
+              }
+          }
+      ]
+  }
+
+job_json_weekly = {
+      "name": "[Solution Accelerator] Propensity Workflow - Weekly",
       "timeout_seconds": 28800,
       "max_concurrent_runs": 1,
       "tasks": [
@@ -151,7 +208,7 @@ job_json_for_notebook_03 = {
               "notebook_task": {
                   "notebook_path": "00_Intro_and_Config"
               },
-              "job_cluster_key": "weekly_propensity_cluster"
+              "job_cluster_key": "propensity_weekly_cluster"
           },
           {
               "task_key": "Train_Model",
@@ -163,12 +220,12 @@ job_json_for_notebook_03 = {
               "notebook_task": {
                   "notebook_path": "Task__Model_Training"
               },
-              "job_cluster_key": "weekly_propensity_cluster"
+              "job_cluster_key": "propensity_weekly_cluster"
           }
       ],
       "job_clusters": [
           {
-              "job_cluster_key": "weekly_propensity_cluster",
+              "job_cluster_key": "propensity_weekly_cluster",
               "new_cluster": {
                   "cluster_name": "",
                   "spark_version": "12.2.x-cpu-ml-scala2.12",
@@ -184,7 +241,8 @@ job_json_for_notebook_03 = {
 
 # COMMAND ----------
 
-NotebookSolutionCompanion().deploy_compute(job_json_for_notebook_03, run_job=run_job)
+NotebookSolutionCompanion().deploy_compute(job_json_daily, run_job=run_job)
+NotebookSolutionCompanion().deploy_compute(job_json_weekly, run_job=run_job)
 
 # COMMAND ----------
 

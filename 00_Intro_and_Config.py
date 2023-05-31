@@ -39,11 +39,6 @@
 
 # COMMAND ----------
 
-# DBTITLE 1,Reinitiate the database and feature store tables we use for this accelerator
-teardown()
-
-# COMMAND ----------
-
 # MAGIC %md ##Step 2: Make Configuration Settings Accessible in Workflows
 # MAGIC
 # MAGIC The configuration settings established here are needed by the various tasks that make up our production workflows.  Unlike interactive notebooks which can run another notebook and directly access any variables defined within them, tasks in a Databricks Workflow execute in a more standalone manner.  That said, we can pass values between tasks in a workflow by using the Databricks Utility [Jobs utility](https://docs.databricks.com/dev-tools/databricks-utils.html#jobs-utility-dbutilsjobs) object as shown here:

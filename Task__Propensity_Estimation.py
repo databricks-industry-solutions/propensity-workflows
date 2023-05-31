@@ -177,12 +177,12 @@ for commodity in commodities.collect():
   # identify households to score for this commodity
   batch = items_to_score.filter(f"commodity_desc='{commodity_desc}'")
 
-  # get scores
+  # get scores, explicitly casting data type
   scores = (
     fs
       .score_batch(model_uri, batch)
       .select('household_key','day', 'commodity_desc', 'prediction')
-      .withColumn('prediction', fn.expr('1 - prediction')) 
+      .withColumn('prediction', fn.expr('CAST(1 - prediction AS DOUBLE)')) 
     )
 
   # add scores to pivotted table
