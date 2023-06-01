@@ -37,7 +37,7 @@ teardown()
 # MAGIC
 # MAGIC To make the data available for our analysis, we provide the `./util/extract_data` notebook to [download](https://www.kaggle.com/frtgnn/dunnhumby-the-complete-journey), extract and copy the data. Each file in the dataset is a comma-separated values file with a header which can be read to a table as follows:
 # MAGIC
-# MAGIC **NOTE** The accelerator path can be altered from within the `./util/config` notebook. 
+# MAGIC **NOTE** The paths used in this accelerator can be altered from within the `./util/config` notebook. 
 
 # COMMAND ----------
 
@@ -108,7 +108,7 @@ create_table( config['database_name'], 'causal_data',  f"{config['mount_point']}
 
 # MAGIC %md ##Step 2: Adjust Transactional Data
 # MAGIC
-# MAGIC The transactional data will be the focal point of our analysis.  It contains information about what was purchased by each household and when along with various discounts applied at the time of purchase. Some of this information is presented in a manner that is not easily consumable.  As such, we will implement some simple logic to sum discounts and combine these with amounts paid to recreate list pricing and make other simply adjustments that make the transactional data a bit easier to consume:  
+# MAGIC The transactional data will be the focal point of our analysis.  It contains information about what was purchased by each household and when along with various discounts applied at the time of purchase. Some of this information is presented in a manner that is not easily consumable.  As such, we will implement some simple logic to sum discounts and combine these with amounts paid to recreate list pricing and make other simple adjustments that make the transactional data a bit easier to consume:  
 
 # COMMAND ----------
 

@@ -271,10 +271,12 @@ for commodity in commodities.collect():
 # MAGIC %sql
 # MAGIC
 # MAGIC -- create empty table if needed
-# MAGIC CREATE TABLE IF NOT EXISTS household_commodity_propensities__UNPIVOTED
-# MAGIC AS
-# MAGIC   SELECT * FROM TEMP__household_commodity_propensities__UNPIVOTED WHERE 1=2;
-# MAGIC
+# MAGIC CREATE TABLE IF NOT EXISTS household_commodity_propensities__UNPIVOTED (
+# MAGIC      household_key INT,   
+# MAGIC      day DATE,   
+# MAGIC      commodity_desc STRING,   
+# MAGIC      prediction DOUBLE);
+# MAGIC      
 # MAGIC -- truncate table and insert new records
 # MAGIC INSERT OVERWRITE household_commodity_propensities__UNPIVOTED
 # MAGIC SELECT * FROM TEMP__household_commodity_propensities__UNPIVOTED;
