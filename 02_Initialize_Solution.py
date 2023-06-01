@@ -157,7 +157,7 @@ dbutils.notebook.run(
 # DBTITLE 1,Setup Empty Table for Propensity Scores (Unpivoted)
 # MAGIC %sql CREATE TABLE IF NOT EXISTS household_commodity_propensities__UNPIVOTED
 # MAGIC AS
-# MAGIC     SELECT household_key, day, commodity_desc, 0.0 as prediction
+# MAGIC     SELECT household_key, day, commodity_desc, cast(0.0 as double) as prediction
 # MAGIC     FROM household_commodity_features     
 # MAGIC     WHERE 1=2; 
 

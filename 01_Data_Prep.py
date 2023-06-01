@@ -28,7 +28,7 @@ import pyspark.sql.functions as fn
 # COMMAND ----------
 
 # DBTITLE 1,Reinitiate the environment we use for this accelerator 
-# This is defined in the `./util/config` notebook. It drops the database and feature store tables 
+# This is defined in the `./util/config` notebook. It drops the database and feature store tables used in this accelerator
 teardown()
 
 # COMMAND ----------
