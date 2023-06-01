@@ -168,7 +168,7 @@ create_table( config['database_name'], 'causal_data',  f"{config['mount_point']}
 # COMMAND ----------
 
 # DBTITLE 1,Review Adjusted Transactions Data
-# MAGIC %sql  SELECT * FROM transactions_adj;
+# MAGIC %sql  SELECT * FROM transactions_adj LIMIT 100;
 
 # COMMAND ----------
 

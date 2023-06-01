@@ -185,7 +185,8 @@ dbutils.notebook.run(
 # MAGIC %sql
 # MAGIC
 # MAGIC SELECT *
-# MAGIC FROM household_commodity_propensities__PIVOTED;
+# MAGIC FROM household_commodity_propensities__PIVOTED
+# MAGIC LIMIT 100;
 
 # COMMAND ----------
 
@@ -193,7 +194,8 @@ dbutils.notebook.run(
 # MAGIC %sql
 # MAGIC
 # MAGIC SELECT *
-# MAGIC FROM household_commodity_propensities__UNPIVOTED;
+# MAGIC FROM household_commodity_propensities__UNPIVOTED
+# MAGIC LIMIT 100;
 
 # COMMAND ----------
 

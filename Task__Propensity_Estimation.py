@@ -258,7 +258,7 @@ for commodity in commodities.collect():
 
 # COMMAND ----------
 
-# DBTITLE 1,Review Pivoted Propensity Scores
+# DBTITLE 1,Review Unpivoted Propensity Scores
 # MAGIC %sql
 # MAGIC
 # MAGIC SELECT *
