@@ -10,9 +10,9 @@
 # MAGIC We envision this workflow as consisting of three principal tasks:
 # MAGIC </p>
 # MAGIC
-# MAGIC 1. Feature Generation (addressed in notebook *Task__Feature_Engineering*)
-# MAGIC 2. Model Training  (addressed in notebook *TASK__Model_Training*)
-# MAGIC 3. Propensity Scoring (addressed in notebook *TASK__Propensity_Estimation*)
+# MAGIC 1. Feature Generation (addressed in notebook *04a_Task__Feature_Engineering*)
+# MAGIC 2. Model Training  (addressed in notebook *04b_TASK__Model_Training*)
+# MAGIC 3. Propensity Scoring (addressed in notebook *04c_TASK__Propensity_Estimation*)
 # MAGIC
 # MAGIC
 # MAGIC **NOTE** Our focus in the numbered notebooks will be on workflow enablement. To understand the details of the work involved in each of these steps, please review the content in each of the task-aligned notebooks.

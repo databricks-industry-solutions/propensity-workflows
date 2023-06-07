@@ -92,7 +92,7 @@ for day in [current_day, current_day-timedelta(days=30)]:
 
   print(f"Generating features for {day}")
   dbutils.notebook.run(
-    path='./Task__Feature_Engineering', # notebook to run
+    path='./04a_Task__Feature_Engineering', # notebook to run
     timeout_seconds=0, # no timeout
     arguments={
       'current day': day.strftime('%Y-%m-%d'), 
@@ -127,7 +127,7 @@ display(
 
 # DBTITLE 1,Train Models
 dbutils.notebook.run(
-  path='./Task__Model_Training', # notebook to run
+  path='./04b_Task__Model_Training', # notebook to run
   timeout_seconds=0, # no timeout
   arguments={
     'current day': config['current_day'].strftime('%Y-%m-%d'), 
@@ -171,7 +171,7 @@ dbutils.notebook.run(
 
 # DBTITLE 1,Calculate Propensities
 dbutils.notebook.run(
-  path='./Task__Propensity_Estimation', # notebook to run
+  path='./04c_Task__Propensity_Estimation', # notebook to run
   timeout_seconds=0, # no timeout
   arguments={
     'current day': config['current_day'].strftime('%Y-%m-%d'), 

@@ -165,7 +165,7 @@ job_json_daily = {
                   }
               ],
               "notebook_task": {
-                  "notebook_path": "Task__Feature_Engineering"
+                  "notebook_path": "04a_Task__Feature_Engineering"
               },
               "job_cluster_key": "propensity_daily_cluster"
           },
@@ -177,7 +177,7 @@ job_json_daily = {
                   }
               ],
               "notebook_task": {
-                  "notebook_path": "Task__Propensity_Estimation"
+                  "notebook_path": "04c_Task__Propensity_Estimation"
               },
               "job_cluster_key": "propensity_daily_cluster"
           }
@@ -218,7 +218,7 @@ job_json_weekly = {
                   }
               ],
               "notebook_task": {
-                  "notebook_path": "Task__Model_Training"
+                  "notebook_path": "04b_Task__Model_Training"
               },
               "job_cluster_key": "propensity_weekly_cluster"
           }

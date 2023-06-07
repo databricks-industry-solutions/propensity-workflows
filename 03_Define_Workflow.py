@@ -10,9 +10,10 @@
 # MAGIC
 # MAGIC <img src='https://brysmiwasb.blob.core.windows.net/demos/images/prop_workflow.png' width=800>
 # MAGIC
-# MAGIC The daily workflow will focus on executing the *Task__Feature_Engineering* and *Task__Propensity_Estimation* tasks. The weekly workflow will focus on executing the *Task__Model_Training* task. More details about the logic associated with each task can be found within the individual task notebooks.  
+# MAGIC The daily workflow will focus on executing the *04a_Task__Feature_Engineering* and *04c_Task__Propensity_Estimation* tasks. The weekly workflow will focus on executing the *04b_Task__Model_Training* task. More details about the logic associated with each task can be found within the individual task notebooks.  
 # MAGIC
 # MAGIC In addition to the UI instructions listed below, we provide automation in the `./RUNME` notebook that can create these workflows for you. 
+# MAGIC
 
 # COMMAND ----------
 
@@ -29,6 +30,7 @@
 # MAGIC <img src='https://brysmiwasb.blob.core.windows.net/demos/images/propensity_workflows_button.PNG' width=200>
 # MAGIC
 # MAGIC Within Workflows, click the ***Create Job*** button. 
+# MAGIC
 
 # COMMAND ----------
 
@@ -61,7 +63,7 @@
 # MAGIC * **Task name:** Generate_Features
 # MAGIC * **Type:** Notebook
 # MAGIC * **Source:** Workspace
-# MAGIC * **Path:** *navigate to the path of the Task__Feature_Engineering notebook*
+# MAGIC * **Path:** *navigate to the path of the 04a_Task__Feature_Engineering notebook*
 # MAGIC * **Cluster:** PropensityScoring-Daily
 # MAGIC
 # MAGIC Click the ***Create task*** button.
@@ -74,7 +76,7 @@
 # MAGIC * **Task name:** Estimate_Propensity
 # MAGIC * **Type:** Notebook
 # MAGIC * **Source:** Workspace
-# MAGIC * **Path:** *navigate to the path of the Task__Propensity_Estimation notebook*
+# MAGIC * **Path:** *navigate to the path of the 04c_Task__Propensity_Estimation notebook*
 # MAGIC * **Cluster:** PropensityScoring-Daily
 # MAGIC
 # MAGIC Click ***Create task*** to complete the process.
@@ -104,9 +106,9 @@
 # MAGIC </p>
 # MAGIC
 # MAGIC 1. *00_Intro_and_Config*
-# MAGIC 2. *Task__Model_Training*
+# MAGIC 2. *04b_Task__Model_Training*
 # MAGIC
-# MAGIC Once the job has been manually run to confirm its in good working order, you can set it on a schedule to run once a week.  We have schedule our job to run at 2 AM on Sunday morning.
+# MAGIC Once the job has been manually run to confirm its in good working order, you can set it on a schedule to run once a week.  We have scheduled our job to run at 2 AM on Sunday morning.
 
 # COMMAND ----------
 
