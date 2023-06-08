@@ -113,6 +113,42 @@ job_json = {
                         "task_key": "02_Initialize_Solution"
                     }
                 ]
+            },
+            {
+                "job_cluster_key": "propensity_workflow_cluster",
+                "notebook_task": {
+                    "notebook_path": f"04a_Task__Feature_Engineering"
+                },
+                "task_key": "04a_Task__Feature_Engineering",
+                "depends_on": [
+                    {
+                        "task_key": "03_Define_Workflow"
+                    }
+                ]
+            },
+            {
+                "job_cluster_key": "propensity_workflow_cluster",
+                "notebook_task": {
+                    "notebook_path": f"04b_Task__Model_Training"
+                },
+                "task_key": "04b_Task__Model_Training",
+                "depends_on": [
+                    {
+                        "task_key": "04a_Task__Feature_Engineering"
+                    }
+                ]
+            },
+            {
+                "job_cluster_key": "propensity_workflow_cluster",
+                "notebook_task": {
+                    "notebook_path": f"04c_Task__Propensity_Estimation"
+                },
+                "task_key": "04c_Task__Propensity_Estimation",
+                "depends_on": [
+                    {
+                        "task_key": "04b_Task__Model_Training"
+                    }
+                ]
             }
         ],
         "job_clusters": [
